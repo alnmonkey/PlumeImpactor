@@ -385,8 +385,10 @@ pub(crate) async fn run_installation(
                             is_mac: dev.is_mac,
                         });
 
-                    if let Some(existing_app) =
-                        refresh_device.apps.iter_mut().find(|a| a.path == dest_path)
+                    if let Some(existing_app) = refresh_device
+                        .apps
+                        .iter_mut()
+                        .find(|a| a.bundle_id == refresh_app.bundle_id)
                     {
                         *existing_app = refresh_app;
                     } else {
